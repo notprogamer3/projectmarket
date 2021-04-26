@@ -1,0 +1,54 @@
+{% extends "base.html" %}
+
+{% block content %}
+{% if current_user.is_authenticated %}
+    <div>
+        <a href="/bag" class="btn btn-warning">
+            Корзина
+        </a>
+        {% if current_user.admin %}
+        <a href="/additem" class="btn btn-warning">
+            Добавить Товар
+        </a>
+        {% endif %}
+    </div>
+    <a class="navbar-brand" href="/logout">{{ current_user.name }}</a>
+{% else %}
+    <p>
+        <a class="btn btn-primary " href="/register">Зарегистрироваться</a>
+        <a class="btn btn-success" href="/login">Войти</a>
+    </p>
+{% endif %}
+{%for i in j %}
+    <h3>
+        {{ i.name }}
+    </h3>
+    <div>
+        <h2>
+            Цена: {{ i.price }}
+        </h2>
+        <h2>
+            Описание: {{ i.about }}
+        </h2>
+        <h2>
+            Коль-во на складе: {{ i.price }}
+        </h2>
+    </div>
+    <div>
+        {% if current_user.is_authenticated %}
+        <a href="/addtobag/{{ i.id }}" class="btn btn-warning">
+            Добавить в корзину
+        </a>
+        {% else %}
+        <a href="/login" class="btn btn-warning">
+            Добавить в корзину
+        </a>
+        {% endif %}
+        {% if current_user.is_authenticated and current_user.admin %}
+        <a href="/delete/{{ i.id }}" class="btn btn-danger">
+            Удалить
+        </a>
+        {% endif %}
+    </div>
+{% endfor %}
+{% endblock %}

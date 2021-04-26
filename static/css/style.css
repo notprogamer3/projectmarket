@@ -1,0 +1,33 @@
+h2 {
+    font-weight: 150;
+    font-size: 15pt;
+    border-left: 1px;
+    margin-left: 50px;
+}
+
+h5 {
+    font-size: 20pt;
+    border-left: 1px;
+    margin-left: 100px;
+}
+
+h4 {
+    opacity: 0.4;
+}
+
+h3 {
+    border-left: 1px;
+    margin-left: 30px;
+}
+
+h1 {
+    font-weight: 150;
+    font-size: 15pt;
+}
+
+p {
+    border-left: 1px;
+    margin-left: 50px;
+    border-right: 1px;
+    margin-right: 50px;
+}

@@ -1,0 +1,56 @@
+{% extends "base.html" %}
+
+{% block content %}
+    {% if current_user.is_authenticated %}
+    <a class="navbar-brand" href="/logout">{{ current_user.name }}</a>
+    <form action="" method="post">
+        {{ form.hidden_tag() }}
+        <h2>
+            Adding a Job
+        </h2>
+        <p>
+            {{ form.job.label }}<br>
+            {{ form.job(class="form-control") }}<br>
+            {% for error in form.job.errors %}
+                <div class="alert alert-danger" role="alert">
+                    {{ error }}
+                </div>
+            {% endfor %}
+        </p>
+        <p>
+            {{ form.leader_id.label }}<br>
+            {{ form.leader_id(class="form-control") }}<br>
+            {% for error in form.leader_id.errors %}
+                <div class="alert alert-danger" role="alert">
+                    {{ error }}
+                </div>
+            {% endfor %}
+        </p>
+        <p>
+            {{ form.work_size.label }}<br>
+            {{ form.work_size(class="form-control") }}<br>
+            {% for error in form.work_size.errors %}
+                <div class="alert alert-danger" role="alert">
+                    {{ error }}
+                </div>
+            {% endfor %}
+        </p>
+        <p>
+            {{ form.colab.label }}<br>
+            {{ form.colab(class="form-control") }}<br>
+            {% for error in form.colab.errors %}
+                <div class="alert alert-danger" role="alert">
+                    {{ error }}
+                </div>
+            {% endfor %}
+        </p>
+        <p>{{ form.is_finished() }} {{ form.is_finished.label }}</p>
+        <p>{{ form.submit(type="submit", class="btn btn-primary") }}</p>
+        <div>{{ message }}</div>
+    </form>
+{% else %}
+    <p>
+        Вы не зарегестрированны
+    </p>
+{% endif %}
+{% endblock %}

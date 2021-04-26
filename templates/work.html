@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+
+{% block content %}
+{% if current_user.is_authenticated %}
+    <div>
+        <a href="/" class="btn btn-warning">
+            Магазин
+        </a>
+    </div>
+    <a class="navbar-brand" href="/logout">{{ current_user.name }}</a>
+    {%for i in j %}
+    <h3>
+        {{ i.name }}
+    </h3>
+    <div>
+        <h2>
+            Цена: {{ i.price }}
+        </h2>
+        <h2>
+            Описание: {{ i.about }}
+        </h2>
+        <h2>
+            Коль-во на складе: {{ i.price }}
+        </h2>
+    </div>
+    <div>
+        <a href="/deletebag/{{ i.id }}" class="btn btn-danger">
+            Удалить из корзины
+        </a>
+    </div>
+{% endfor %}
+{% else %}
+    <p>
+        Вы не зарегестрированны
+    </p>
+{% endif %}
+{% endblock %}
